@@ -12,7 +12,7 @@ export class UserService {
                 return userWithoutPassword;
             });
             
-        } catch (error: unknown) {
+        } catch (error) {
             if (error instanceof Error) {
                 throw new Error(`Failed to retrieve users: ${error.message}`);
             }
@@ -30,7 +30,7 @@ export class UserService {
             const { password, ...userWithoutPassword } = user.toObject();
             return userWithoutPassword;
 
-        } catch (error: unknown) {
+        } catch (error) {
             if (error instanceof Error) {
                 throw new Error(`Failed to retrieve user: ${error.message}`);
             }
@@ -52,7 +52,7 @@ export class UserService {
             const { password, ...userWithoutPassword } = updatedUser.toObject();
             return userWithoutPassword;
 
-        } catch (error: unknown) {
+        } catch (error) {
             if (error instanceof Error) {
                 throw new Error(`Failed to update user: ${error.message}`);
             }
@@ -70,7 +70,7 @@ export class UserService {
             const { password, ...userWithoutPassword } = deletedUser.toObject();
             return userWithoutPassword;
 
-        } catch (error: unknown) {
+        } catch (error) {
             if (error instanceof Error) {
                 throw new Error(`Failed to delete user: ${error.message}`);
             }

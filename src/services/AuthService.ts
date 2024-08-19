@@ -20,7 +20,7 @@ export class AuthService {
             const { password: _, ...userWithoutPassword } = user.toObject();
             return userWithoutPassword;
             
-        } catch (error: unknown) {
+        } catch (error) {
             if (error instanceof Error) {
                 throw new Error(`Failed to create user: ${error.message}`);
             }
@@ -46,7 +46,7 @@ export class AuthService {
             const { password: hashedPassword, ...userWithoutPassword } = user.toObject();
             return userWithoutPassword;
             
-        } catch (error: unknown) {
+        } catch (error) {
             if (error instanceof Error) {
                 throw new Error(`Login failed: ${error.message}`);
             }

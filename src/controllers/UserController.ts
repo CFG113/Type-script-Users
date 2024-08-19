@@ -13,7 +13,7 @@ export class UserController {
             const users = await this.userService.getUsers();
 
             res.status(200).json(users);
-        } catch (error: unknown) {
+        } catch (error) {
             next(error);
         }
     }
@@ -28,7 +28,7 @@ export class UserController {
             }
 
             res.status(200).json(user);
-        } catch (error: unknown) {
+        } catch (error) {
             next(error);
         }
     }
@@ -43,7 +43,7 @@ export class UserController {
             }
 
             res.status(200).json(user);
-        } catch (error: unknown) {
+        } catch (error) {
             next(error);
         }
     }
@@ -58,7 +58,7 @@ export class UserController {
             }
 
             res.status(200).json(user);
-        } catch (error: unknown) {
+        } catch (error) {
             next(error);
         }
     }

@@ -13,7 +13,7 @@ export class AuthController {
             const user = await this.authService.createUser(req.body);
 
             res.status(201).json(user);
-        } catch (error: unknown) {
+        } catch (error) {
             next(error);
         }
     }
@@ -29,7 +29,7 @@ export class AuthController {
             }
 
             res.status(200).json(user);
-        } catch (error: unknown) {
+        } catch (error) {
             next(error);
         }
     }
