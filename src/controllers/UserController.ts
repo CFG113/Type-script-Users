@@ -8,50 +8,57 @@ export class UserController {
         this.userService = new UserService();
     }
 
-    public async getUsers(req: Request, res: Response, next: NextFunction): Promise<void> {
+    public async getUsers(req: Request, res: Response, next: NextFunction) {
         try {
             const users = await this.userService.getUsers();
+
             res.status(200).json(users);
-        } catch (error) {
+        } catch (error: unknown) {
             next(error);
         }
     }
 
-    public async getUserById(req: Request, res: Response, next: NextFunction): Promise<void> {
+    public async getUserById(req: Request, res: Response, next: NextFunction) {
         try {
             const user = await this.userService.getUserById(req.params.id);
+
             if (!user) {
                 res.status(404).json({ message: 'User not found' });
                 return;
             }
+
             res.status(200).json(user);
-        } catch (error) {
+        } catch (error: unknown) {
             next(error);
         }
     }
 
-    public async updateUser(req: Request, res: Response, next: NextFunction): Promise<void> {
+    public async updateUser(req: Request, res: Response, next: NextFunction) {
         try {
             const user = await this.userService.updateUser(req.params.id, req.body);
+
             if (!user) {
                 res.status(404).json({ message: 'User not found' });
                 return;
             }
+
             res.status(200).json(user);
-        } catch (error) {
+        } catch (error: unknown) {
             next(error);
         }
     }
 
-    public async deleteUser(req: Request, res: Response, next: NextFunction): Promise<void> {
+    public async deleteUser(req: Request, res: Response, next: NextFunction) {
         try {
             const user = await this.userService.deleteUser(req.params.id);
+
             if (!user) {
                 res.status(404).json({ message: 'User not found' });
                 return;
             }
+
             res.status(200).json(user);
-        } catch (error) {
+        } catch (error: unknown) {
             next(error);
         }
     }

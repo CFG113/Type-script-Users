@@ -1,1 +1,1 @@
-export * from './IUser.interface';
+export * from './IUser';

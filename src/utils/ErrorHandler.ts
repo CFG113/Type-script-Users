@@ -1,8 +1,14 @@
 import { Request, Response, NextFunction } from 'express';
 
-export function errorHandler(err: any, req: Request, res: Response, next: NextFunction): void {
-    const statusCode = err.status || 500;
-    const message = err.message || 'Internal Server Error';
+export function errorHandler(error: unknown, req: Request, res: Response, next: NextFunction): void {
+    let statusCode = 500;
+    let message = 'Internal Server Error';
+
+    if (error instanceof Error) {
+        // Extract the status code if it exists on the erroror object
+        statusCode = (error as { status?: number }).status || 500;
+        message = error.message;
+    }
 
     res.status(statusCode).json({
         code: statusCode,
